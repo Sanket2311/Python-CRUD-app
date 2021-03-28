@@ -1,13 +1,11 @@
 from flask import Flask, render_template, url_for, redirect,request, flash
 from flask_sqlalchemy import SQLAlchemy
 
-import os
-
 app = Flask(__name__)
 app.secret_key = "Secret key"
  
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://b1131a4569335f:44bfbd1d@us-cdbr-east-03.cleardb.com/heroku_3338b3a7e705b16?reconnect=true'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
