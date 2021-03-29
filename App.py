@@ -7,28 +7,29 @@ app = Flask(__name__)
 app.secret_key = "Secret key"
  
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://n1kgmt4q3oqm5vd8:yzay4mron21zi4np@u6354r3es4optspf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/g6k28qe8qz4sd3us"
+ #"mysql://b1131a4569335f:'44bfbd1d'@us-cdbr-east-03.cleardb.com/crud"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
  
  
-# #Creating model table for our CRUD database
-# class Data(db.Model):
-#     student_id = db.Column(db.Integer, primary_key = True)
-#     first_name = db.Column(db.String(100))
-#     last_name = db.Column(db.String(100))
-#     dob = db.Column(db.Date())
-#     amount_due = db.Column(db.String(100))
+#Creating model table for our CRUD database
+class Data(db.Model):
+    student_id = db.Column(db.Integer, primary_key = True)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    dob = db.Column(db.Date())
+    amount_due = db.Column(db.String(100))
  
-#     def __init__(self, first_name, last_name, dob, amount_due):
+    def __init__(self, first_name, last_name, dob, amount_due):
  
-#         self.first_name = first_name
-#         self.last_name = last_name
-#         self.dob = dob
-#         self.amount_due = amount_due
+        self.first_name = first_name
+        self.last_name = last_name
+        self.dob = dob
+        self.amount_due = amount_due
  
-#     db.create_all()
+    db.create_all()
 
 @app.route('/')
 def Index():
