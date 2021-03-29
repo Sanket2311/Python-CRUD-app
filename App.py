@@ -1,32 +1,34 @@
 from flask import Flask, render_template, url_for, redirect,request, flash
 from flask_sqlalchemy import SQLAlchemy
 
+import os
+
 app = Flask(__name__)
 app.secret_key = "Secret key"
  
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://b1131a4569335f:44bfbd1d@us-cdbr-east-03.cleardb.com/heroku_3338b3a7e705b16?reconnect=true'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
  
  
-#Creating model table for our CRUD database
-class Data(db.Model):
-    student_id = db.Column(db.Integer, primary_key = True)
-    first_name = db.Column(db.String(100))
-    last_name = db.Column(db.String(100))
-    dob = db.Column(db.Date())
-    amount_due = db.Column(db.String(100))
+# #Creating model table for our CRUD database
+# class Data(db.Model):
+#     student_id = db.Column(db.Integer, primary_key = True)
+#     first_name = db.Column(db.String(100))
+#     last_name = db.Column(db.String(100))
+#     dob = db.Column(db.Date())
+#     amount_due = db.Column(db.String(100))
  
-    def __init__(self, first_name, last_name, dob, amount_due):
+#     def __init__(self, first_name, last_name, dob, amount_due):
  
-        self.first_name = first_name
-        self.last_name = last_name
-        self.dob = dob
-        self.amount_due = amount_due
+#         self.first_name = first_name
+#         self.last_name = last_name
+#         self.dob = dob
+#         self.amount_due = amount_due
  
- 
+#     db.create_all()
 
 @app.route('/')
 def Index():
