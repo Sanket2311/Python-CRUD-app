@@ -1,14 +1,11 @@
 from flask import Flask, render_template, url_for, redirect,request, flash
 from flask_sqlalchemy import SQLAlchemy
 
-import os
-
 app = Flask(__name__)
 app.secret_key = "Secret key"
  
 #SqlAlchemy Database Configuration With Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("mysql://n1kgmt4q3oqm5vd8:yzay4mron21zi4np@u6354r3es4optspf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/g6k28qe8qz4sd3us")
- #"mysql://root:''@localhost/crud"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:''@localhost/crud"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
@@ -29,7 +26,7 @@ class Data(db.Model):
         self.dob = dob
         self.amount_due = amount_due
  
-    db.create_all()
+ 
 
 @app.route('/')
 def Index():
@@ -88,7 +85,6 @@ def delete(student_id):
     flash("Student Deleted Successfully")
 
     return redirect(url_for('Index'))
-
 
 
 if __name__ == "__main__":
