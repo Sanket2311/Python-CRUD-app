@@ -8,7 +8,7 @@ app.secret_key = "Secret key"
  
 #SqlAlchemy Database Configuration With Mysql
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("mysql://n1kgmt4q3oqm5vd8:yzay4mron21zi4np@u6354r3es4optspf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/g6k28qe8qz4sd3us")
- #"mysql://b1131a4569335f:'44bfbd1d'@us-cdbr-east-03.cleardb.com/crud"
+ #"mysql://root:''@localhost/crud"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
